@@ -1,0 +1,22 @@
+<!-- 
+  This file enables Netlify Forms detection for the contact form.
+  Netlify's build bot parses static HTML files to detect forms.
+  Since our React form is client-rendered, we need this static version.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forms</title>
+</head>
+<body>
+  <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <input name="form-name" type="hidden" value="contact" />
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="email" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>
+
