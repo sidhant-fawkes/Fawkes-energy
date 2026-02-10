@@ -8,7 +8,25 @@ async function getPost(slug: string) {
         title,
         mainImage,
         "heroVideoUrl": heroVideo.asset->url,
-        body,
+        body[]{
+            ...,
+            _type == "image" => {
+                ...,
+                asset->{
+                    _id,
+                    _ref,
+                    _type,
+                    url,
+                    metadata {
+                        dimensions {
+                            width,
+                            height,
+                            aspectRatio
+                        }
+                    }
+                }
+            }
+        },
         publishedAt,
         excerpt,
         postStyle,

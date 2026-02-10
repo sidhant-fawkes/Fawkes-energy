@@ -35,7 +35,7 @@ export default function BlogSection() {
                     mainImage,
                     publishedAt,
                     "authorName": author->name,
-                    "excerpt": array::join(string::split((pt::text(body)), "")[0..150], "") + "..."
+                    "excerpt": coalesce(excerpt, body[0].children[0].text)
                 }`
                 const data = await client.fetch(query)
                 setPosts(data)

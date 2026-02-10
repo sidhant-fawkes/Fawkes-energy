@@ -22,7 +22,7 @@ async function getPosts(): Promise<Post[]> {
         mainImage,
         publishedAt,
         "authorName": author->name,
-        "excerpt": array::join(string::split((pt::text(body)), "")[0..200], "") + "..."
+        "excerpt": coalesce(excerpt, body[0].children[0].text)
     }`
     try {
         const posts = await client.fetch(query)
