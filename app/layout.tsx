@@ -33,6 +33,9 @@ export const metadata: Metadata = {
     title: 'Fawkes Energy - Battery Intelligence',
     description: 'Intelligent systems to monitor and model battery health across life stages.',
   },
+  icons: {
+    icon: '/images/icon.svg',
+  },
 }
 
 export const viewport = {
