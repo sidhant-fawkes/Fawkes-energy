@@ -10,7 +10,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 
 // Configuration
 const config = {
-  inputDir: 'videos',
+  inputDir: 'public/videos',
   outputDir: 'public/videos',
   formats: [
     // Desktop versions - optimized for faster loading

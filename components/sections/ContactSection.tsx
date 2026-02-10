@@ -63,11 +63,11 @@ export default function ContactSection() {
                             <div className="flex items-start gap-3">
                                 <Mail className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                                 <div className="flex flex-col gap-2">
-                                    <a href="mailto:medha@fawkes.energy" className="hover:text-foreground transition-colors">
-                                        medha@fawkes.energy
-                                    </a>
                                     <a href="mailto:akshay@fawkes.energy" className="hover:text-foreground transition-colors">
                                         akshay@fawkes.energy
+                                    </a>
+                                    <a href="mailto:karthik@fawkes.energy" className="hover:text-foreground transition-colors">
+                                        karthik@fawkes.energy
                                     </a>
                                 </div>
                             </div>

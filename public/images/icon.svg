@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="33 0 133 133" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .bolt { fill: #F49600; }
+  </style>
+  <!-- Fawkes lightning bolt from original logo -->
+  <polygon class="bolt" points="123.91,75.77 130.68,59.43 91.61,59.43 91.74,59.28 91.61,59.28 100.91,0 68.4,75.77 107.49,75.77 107.43,75.86 107.49,75.86 101.85,132.68"/>
+</svg>

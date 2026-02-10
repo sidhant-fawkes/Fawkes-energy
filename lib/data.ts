@@ -563,6 +563,11 @@ export const products = [
         description: "A data-driven marketplace connecting end-of-life batteries with second-life applications and certified recyclers, closing the loop.",
         iconName: 'RefreshCw',
     },
+    {
+        name: "FawkesArc",
+        description: "A design and simulation tool for BESS manufacturers to design battery storage systems and analyze their performance, health, and techno-economics.",
+        iconName: 'Target',
+    },
 ];
 
 export const differentiators = [
