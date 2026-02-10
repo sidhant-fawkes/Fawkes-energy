@@ -28,6 +28,64 @@ interface ImmersiveLayoutProps {
     post: Post
 }
 
+// Custom Portable Text components for Immersive style
+const immersiveComponents = {
+    types: {
+        image: ({ value }: any) => {
+            if (!value?.asset) {
+                return null
+            }
+            
+            try {
+                // Handle expanded asset from GROQ (has url directly) vs reference asset
+                let imageUrl: string
+                let imageWidth: number
+                let imageHeight: number
+                
+                if (value.asset.url) {
+                    // Expanded asset from GROQ
+                    imageUrl = value.asset.url
+                    imageWidth = value.asset.metadata?.dimensions?.width || 1200
+                    imageHeight = value.asset.metadata?.dimensions?.height || 800
+                } else {
+                    // Reference asset - use urlForImage
+                    imageUrl = urlForImage(value).url()
+                    imageWidth = value.asset?.metadata?.dimensions?.width || 1200
+                    imageHeight = value.asset?.metadata?.dimensions?.height || 800
+                }
+                
+                if (!imageUrl) {
+                    return null
+                }
+                
+                return (
+                    <figure className="my-8">
+                        <div className="relative w-full rounded-xl overflow-hidden bg-muted/20 flex items-center justify-center" style={{ minHeight: '200px' }}>
+                            <Image
+                                src={imageUrl}
+                                alt={value.alt || 'Blog post image'}
+                                width={imageWidth}
+                                height={imageHeight}
+                                className="object-contain max-w-full h-auto"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 800px"
+                                unoptimized
+                            />
+                        </div>
+                        {value.caption && (
+                            <figcaption className="mt-4 text-sm text-center text-muted-foreground italic">
+                                {value.caption}
+                            </figcaption>
+                        )}
+                    </figure>
+                )
+            } catch (error) {
+                console.error('Error rendering image:', error, value)
+                return null
+            }
+        },
+    },
+}
+
 export default function ImmersiveLayout({ post }: ImmersiveLayoutProps) {
     const [scrollY, setScrollY] = useState(0)
     const [readProgress, setReadProgress] = useState(0)
@@ -161,7 +219,7 @@ export default function ImmersiveLayout({ post }: ImmersiveLayoutProps) {
                 <div className="max-w-3xl mx-auto px-6 py-16">
                     {/* Article Body */}
                     <div className="prose prose-lg dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-p:text-muted-foreground prose-p:leading-relaxed prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-primary prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-img:rounded-xl prose-img:shadow-lg max-w-none">
-                        <PortableText value={post.body} />
+                        <PortableText value={post.body} components={immersiveComponents} />
                     </div>
 
                     {/* Divider */}

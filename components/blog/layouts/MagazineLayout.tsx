@@ -29,6 +29,60 @@ interface MagazineLayoutProps {
 
 // Custom Portable Text components for Magazine style
 const magazineComponents = {
+    types: {
+        image: ({ value }: any) => {
+            if (!value?.asset) {
+                return null
+            }
+            
+            try {
+                // Handle expanded asset from GROQ (has url directly) vs reference asset
+                let imageUrl: string
+                let imageWidth: number
+                let imageHeight: number
+                
+                if (value.asset.url) {
+                    // Expanded asset from GROQ
+                    imageUrl = value.asset.url
+                    imageWidth = value.asset.metadata?.dimensions?.width || 1200
+                    imageHeight = value.asset.metadata?.dimensions?.height || 800
+                } else {
+                    // Reference asset - use urlForImage
+                    imageUrl = urlForImage(value).url()
+                    imageWidth = value.asset?.metadata?.dimensions?.width || 1200
+                    imageHeight = value.asset?.metadata?.dimensions?.height || 800
+                }
+                
+                if (!imageUrl) {
+                    return null
+                }
+                
+                return (
+                    <figure className="my-8">
+                        <div className="relative w-full rounded-xl overflow-hidden bg-muted/20 flex items-center justify-center" style={{ minHeight: '200px' }}>
+                            <Image
+                                src={imageUrl}
+                                alt={value.alt || 'Blog post image'}
+                                width={imageWidth}
+                                height={imageHeight}
+                                className="object-contain max-w-full h-auto"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 800px"
+                                unoptimized
+                            />
+                        </div>
+                        {value.caption && (
+                            <figcaption className="mt-4 text-sm text-center text-muted-foreground italic">
+                                {value.caption}
+                            </figcaption>
+                        )}
+                    </figure>
+                )
+            } catch (error) {
+                console.error('Error rendering image:', error, value)
+                return null
+            }
+        },
+    },
     block: {
         normal: ({ children }: any) => {
             // Check if this is the first paragraph for drop cap
