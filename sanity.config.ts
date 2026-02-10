@@ -3,6 +3,7 @@
  */
 
 import { visionTool } from '@sanity/vision'
+import { table } from '@sanity/table'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 
@@ -21,5 +22,6 @@ export default defineConfig({
         // Vision is a tool that lets you query your content with GROQ in the studio
         // https://www.sanity.io/docs/the-vision-plugin
         visionTool({ defaultApiVersion: apiVersion }),
+        table(),
     ],
 })

@@ -8,6 +8,7 @@ import { ArrowLeft, Calendar, Share2 } from 'lucide-react'
 import { urlForImage } from '@/sanity/lib/image'
 import AuthorCard from '../shared/AuthorCard'
 import ReadingTime from '../shared/ReadingTime'
+import PortableTextTable from '../shared/PortableTextTable'
 
 interface Post {
     _id: string
@@ -82,6 +83,7 @@ const magazineComponents = {
                 return null
             }
         },
+        table: PortableTextTable,
     },
     block: {
         normal: ({ children }: any) => {

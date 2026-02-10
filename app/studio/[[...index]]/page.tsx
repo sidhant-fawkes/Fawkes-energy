@@ -1,12 +1,7 @@
 import Studio from './Studio'
 
-export const dynamic = 'force-static'
-
-
-
-export function generateStaticParams() {
-    return [{ index: [] }]
-}
+// Studio requires dynamic rendering (not static export)
+export const dynamic = 'force-dynamic'
 
 export default function StudioPage() {
     return <Studio />
