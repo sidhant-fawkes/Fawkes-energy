@@ -1,38 +1,21 @@
-'use client'
+import HomeClient from '@/components/HomeClient'
 
-import React, { useRef } from 'react'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
-import { ScrollProgressIndicator } from '@/components/ui/ScrollProgressIndicator'
-import HeroSection from '@/components/sections/HeroSection'
-import ProblemSection from '@/components/sections/ProblemSection'
-import VisionSection from '@/components/sections/VisionSection'
-import ProductStackSection from '@/components/sections/ProductStackSection'
-import DifferentiatorsSection from '@/components/sections/DifferentiatorsSection'
-import ValueDeliveredSection from '@/components/sections/ValueDeliveredSection'
-import AboutSection from '@/components/sections/AboutSection'
-import BlogSection from '@/components/sections/BlogSection'
-import ContactSection from '@/components/sections/ContactSection'
+// Force static generation so Netlify can detect forms at build time
+export const dynamic = 'force-static'
 
 export default function Home() {
-  const mainRef = useRef<HTMLElement>(null);
-
   return (
-    <div className="min-h-screen bg-background font-body antialiased">
-      <ScrollProgressIndicator container={mainRef} />
-      <Header />
-      <main ref={mainRef} className="h-screen overflow-y-auto scroll-smooth">
-        <HeroSection />
-        <ProblemSection />
-        <VisionSection />
-        <ProductStackSection />
-        <DifferentiatorsSection />
-        <ValueDeliveredSection />
-        <AboutSection />
-        <BlogSection />
-        <ContactSection />
-        <Footer />
-      </main>
-    </div>
+    <>
+      {/* Static form for Netlify Forms detection - must be in server component */}
+      <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
+        <input type="hidden" name="form-name" value="contact" />
+        <input name="bot-field" />
+        <input name="name" />
+        <input name="email" />
+        <input name="subject" />
+        <textarea name="message" />
+      </form>
+      <HomeClient />
+    </>
   )
 }

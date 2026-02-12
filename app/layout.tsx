@@ -67,15 +67,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
-        {/* Hidden form for Netlify Forms detection in SSR mode */}
-        <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
-          <input type="hidden" name="form-name" value="contact" />
-          <input name="bot-field" />
-          <input name="name" />
-          <input name="email" />
-          <input name="subject" />
-          <textarea name="message" />
-        </form>
         <ThemeProvider>
           {children}
         </ThemeProvider>
