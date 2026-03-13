@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Zap, Brain, RefreshCw, Target } from 'lucide-react'
+import { Zap, Brain, RefreshCw, Target, ExternalLink } from 'lucide-react'
 import Section from '@/components/ui/Section'
 import { Heading, Body } from '@/components/ui/Typography'
 import { products } from '@/lib/data'
@@ -85,6 +85,24 @@ export default function ProductStackSection() {
                                 <Heading variant="md" as="h3" className="mb-0">{product.name}</Heading>
                             </div>
                             <Body variant="lg">{product.description}</Body>
+                            <div className="mt-4 flex items-center gap-4">
+                                {'learnMoreUrl' in product && (product as { learnMoreUrl?: string }).learnMoreUrl && (
+                                    <a
+                                        href={(product as { learnMoreUrl: string }).learnMoreUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+                                    >
+                                        Learn more
+                                        <ExternalLink className="w-4 h-4" />
+                                    </a>
+                                )}
+                                {'comingSoon' in product && (product as { comingSoon?: boolean }).comingSoon && (
+                                    <span className="font-medium" style={{ color: '#D1D5DB' }}>
+                                        Coming soon...
+                                    </span>
+                                )}
+                            </div>
                         </div>
 
                         {/* Product video */}

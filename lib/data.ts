@@ -552,21 +552,25 @@ export const products = [
         name: "FawkesLink",
         description: "Our universal hardware interface plugs into any battery system, capturing high-fidelity data in real-time.",
         iconName: 'Zap',
+        learnMoreUrl: 'https://fawkeslink.fawkesenergy.com/',
     },
     {
         name: "FawkesCore",
         description: "The AI-powered brain of our platform. It processes data to deliver predictive analytics, state-of-health monitoring, and optimization strategies.",
         iconName: 'Brain',
-    },
-    {
-        name: "FawkesLoop",
-        description: "A data-driven marketplace connecting end-of-life batteries with second-life applications and certified recyclers, closing the loop.",
-        iconName: 'RefreshCw',
+        comingSoon: true,
     },
     {
         name: "FawkesArc",
         description: "A design and simulation tool for BESS manufacturers to design battery storage systems and analyze their performance, health, and techno-economics.",
         iconName: 'Target',
+        comingSoon: true,
+    },
+    {
+        name: "FawkesLoop",
+        description: "A data-driven marketplace connecting end-of-life batteries with second-life applications and certified recyclers, closing the loop.",
+        iconName: 'RefreshCw',
+        comingSoon: true,
     },
 ];
 
